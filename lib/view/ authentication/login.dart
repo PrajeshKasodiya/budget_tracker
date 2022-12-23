@@ -1,6 +1,7 @@
 import 'package:budget/view/%20authentication/register.dart';
 import 'package:flutter/material.dart';
 
+var properties = Properties();
 class UserLogin extends StatefulWidget {
   const UserLogin({Key? key}) : super(key: key);
 
@@ -37,7 +38,7 @@ class _UserLoginState extends State<UserLogin> {
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              padding: properties.outsidePadding.padding,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -53,9 +54,9 @@ class _UserLoginState extends State<UserLogin> {
                     const SizedBox(
                       height: 40,
                     ),
-                  const  Padding(
-                      padding:   EdgeInsets.only(left: 10.0),
-                      child:   Text(
+                     Padding(
+                      padding: properties.inlinePadding.padding,
+                      child:const Text(
                         "Full Name",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                       ),
@@ -77,9 +78,9 @@ class _UserLoginState extends State<UserLogin> {
                     const SizedBox(
                       height: 20,
                     ),
-                     const Padding(
-                        padding:   EdgeInsets.only(left: 10.0),
-                        child: Text(
+                       Padding(
+                       padding:properties.inlinePadding.padding,
+                        child:const Text(
                         "Email or Phone Number",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                     ),
@@ -101,9 +102,9 @@ class _UserLoginState extends State<UserLogin> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Padding(
-                       padding:   EdgeInsets.only(left: 10.0),
-                       child: Text(
+                      Padding(
+                      padding:properties.inlinePadding.padding,
+                       child:const Text(
                         "Password",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                     ),

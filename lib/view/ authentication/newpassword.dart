@@ -1,21 +1,17 @@
-import 'package:budget/view/%20authentication/forgot_password.dart';
-import 'package:budget/view/%20authentication/login.dart';
+import 'package:budget/view/%20authentication/register.dart';
+import 'package:budget/view/%20authentication/success.dart';
 import 'package:flutter/material.dart';
 
-class Properties{
-  var outsidePadding =const Padding(padding: EdgeInsets.symmetric(horizontal: 25));
-  var inlinePadding = const Padding(padding: EdgeInsets.only(left:10));
-}
-
 var properties = Properties();
-class Registers extends StatefulWidget {
-  const Registers({Key? key}) : super(key: key);
+class NewPassword extends StatefulWidget {
+  const NewPassword({Key? key}) : super(key: key);
 
   @override
-  State<Registers> createState() => _RegistersState();
+  State<NewPassword> createState() => _NewPasswordState();
 }
 
-class _RegistersState extends State<Registers> {
+class _NewPasswordState extends State<NewPassword> {
+  @override
   bool isChecked = false;
   bool securePassword = true;
   final _registerFormKey = GlobalKey<FormState>();
@@ -28,34 +24,26 @@ class _RegistersState extends State<Registers> {
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding: properties.outsidePadding.padding,
+              padding:properties.outsidePadding.padding,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RichText(
                       text: const TextSpan(
-                        text: 'Sign in to ',
+                        text: 'New Password ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             fontSize: 24),
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: 'Budget Tracker',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blueAccent,
-                                  fontSize: 24)),
-                        ],
                       ),
                     ),
                     const SizedBox(
                       height: 40,
                     ),
-                    Padding(
-                      padding: properties.inlinePadding.padding ,
-                      child: const Text(
-                        "Email or Phone Number",
+                      Padding(
+                      padding:properties.inlinePadding.padding,
+                      child:const Text(
+                        "New Password",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -71,7 +59,7 @@ class _RegistersState extends State<Registers> {
                       ),
                       validator: (value) {
                         if (value!.trim().isEmpty) {
-                          return "Please Enter Email or Number ";
+                          return "Please Enter Password!";
                         }
                         return null;
                       },
@@ -79,10 +67,10 @@ class _RegistersState extends State<Registers> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Padding(
+                      Padding(
                       padding:properties.inlinePadding.padding,
-                      child: const Text(
-                        "Password",
+                      child:const Text(
+                        "Retype new Password",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -140,7 +128,10 @@ class _RegistersState extends State<Registers> {
                     InkWell(
                       onTap: () {
                         if (_registerFormKey.currentState!.validate()) {
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => ))
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Success()));
                         }
                       },
                       child: Container(
@@ -155,54 +146,6 @@ class _RegistersState extends State<Registers> {
                           "Sign in",
                           style: TextStyle(color: Colors.white, fontSize: 17),
                         )),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ForgetPassword()));
-                      },
-                      child: const Center(
-                        child: Text(
-                          "Forget the password?",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF5D5FEF)),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const UserLogin()));
-                        },
-                        child: RichText(
-                          text: const TextSpan(
-                            text: "Don't have an account?  ",
-                            style:
-                                TextStyle(color: Colors.black38, fontSize: 16),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Sign up',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF5D5FEF),
-                                      fontSize: 16)),
-                            ],
-                          ),
-                        ),
                       ),
                     ),
                   ]),

@@ -1,4 +1,7 @@
 
+import 'package:budget/view/%20authentication/forgot_password.dart';
+import 'package:budget/view/%20authentication/newpassword.dart';
+import 'package:budget/view/%20authentication/success.dart';
 import 'package:budget/view/%20authentication/welcome.dart';
 import 'package:flutter/material.dart';
 
