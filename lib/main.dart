@@ -1,8 +1,8 @@
-
 import 'package:budget/view/%20authentication/forgot_password.dart';
 import 'package:budget/view/%20authentication/newpassword.dart';
 import 'package:budget/view/%20authentication/success.dart';
 import 'package:budget/view/%20authentication/welcome.dart';
+import 'package:budget/view/master/master_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
           )
       ),
-      home: const WelcomePage()
+      home: const MasterPage()
     );
   }
 }
