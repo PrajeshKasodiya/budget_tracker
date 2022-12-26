@@ -1,11 +1,7 @@
 import 'package:budget/view/%20authentication/forgot_password.dart';
 import 'package:budget/view/%20authentication/login.dart';
 import 'package:flutter/material.dart';
-
-class Properties{
-  var outsidePadding =const Padding(padding: EdgeInsets.symmetric(horizontal: 25));
-  var inlinePadding = const Padding(padding: EdgeInsets.only(left:10));
-}
+import '../../widgets/properties.dart';
 
 var properties = Properties();
 class Registers extends StatefulWidget {

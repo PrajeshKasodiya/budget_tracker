@@ -1,4 +1,5 @@
 import 'package:budget/view/%20authentication/register.dart';
+import 'package:budget/widgets/properties.dart';
 import 'package:flutter/material.dart';
 
 var properties = Properties();
