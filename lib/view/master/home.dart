@@ -36,7 +36,8 @@ class _HomePgeState extends State<HomePge> {
                 margin:const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(13),
-                    color:const Color(0xFFC5CAE9)
+                    color:const Color(0xFFE5E7F6)
+
                 ),
               ),
               Padding(

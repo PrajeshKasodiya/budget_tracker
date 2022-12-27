@@ -1,3 +1,4 @@
+import 'package:budget/view/profile/my_card.dart';
 import 'package:flutter/material.dart';
 
 class Properties{
@@ -26,5 +27,16 @@ class Properties{
     "Currency",
     "Services",
     "logout"
+  ];
+
+  //profile page navigation list
+  final List profileNavigation = [
+    const MyCard(),
+    const MyCard(),
+    const MyCard(),
+    const MyCard(),
+    const MyCard(),
+    const MyCard(),
+    const MyCard(),
   ];
 }
