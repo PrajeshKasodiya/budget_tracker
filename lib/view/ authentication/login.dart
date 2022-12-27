@@ -3,6 +3,7 @@ import 'package:budget/widgets/properties.dart';
 import 'package:flutter/material.dart';
 
 var properties = Properties();
+
 class UserLogin extends StatefulWidget {
   const UserLogin({Key? key}) : super(key: key);
 
@@ -18,22 +19,6 @@ class _UserLoginState extends State<UserLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: Colors.white,
-      //   title: const Padding(
-      //     padding: EdgeInsets.only(left: 5, top: 15),
-      //     child: Align(
-      //       alignment: Alignment.centerLeft,
-      //       child: CircleAvatar(
-      //         backgroundImage: NetworkImage(
-      //             "https://images-platform.99static.com/OhIwKA0LDfOZN2BAf38MPk_BE4A=/167x154:"
-      //                 "1070x1057/500x500/top/smart/99designs-contests-attachments"
-      //                 "/90/90571/attachment_90571829"),
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: Form(
         key: _createUserFormKey,
         child: Center(
@@ -55,11 +40,14 @@ class _UserLoginState extends State<UserLogin> {
                     const SizedBox(
                       height: 40,
                     ),
-                     Padding(
+                    Padding(
                       padding: properties.inlinePadding.padding,
-                      child:const Text(
+                      child: const Text(
                         "Full Name",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -79,13 +67,16 @@ class _UserLoginState extends State<UserLogin> {
                     const SizedBox(
                       height: 20,
                     ),
-                       Padding(
-                       padding:properties.inlinePadding.padding,
-                        child:const Text(
+                    Padding(
+                      padding: properties.inlinePadding.padding,
+                      child: const Text(
                         "Email or Phone Number",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
-                    ),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                    ),
                     const SizedBox(height: 10),
                     TextFormField(
                       decoration: const InputDecoration(
@@ -103,23 +94,30 @@ class _UserLoginState extends State<UserLogin> {
                     const SizedBox(
                       height: 20,
                     ),
-                      Padding(
-                      padding:properties.inlinePadding.padding,
-                       child:const Text(
+                    Padding(
+                      padding: properties.inlinePadding.padding,
+                      child: const Text(
                         "Password",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                     ),
                     const SizedBox(height: 10),
                     TextFormField(
-                      decoration:InputDecoration(
-                        suffixIcon: IconButton(onPressed: () {
-                          setState(() {
-                            securePassword = !securePassword;
-                          });
-                        }, icon: securePassword ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility)),
-                        contentPadding:const  EdgeInsets.all(10.0),
-                        border:const  OutlineInputBorder(
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                securePassword = !securePassword;
+                              });
+                            },
+                            icon: securePassword
+                                ? const Icon(Icons.visibility_off)
+                                : const Icon(Icons.visibility)),
+                        contentPadding: const EdgeInsets.all(10.0),
+                        border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(7))),
                       ),
                       obscureText: securePassword,
@@ -138,7 +136,7 @@ class _UserLoginState extends State<UserLogin> {
                         Checkbox(
                           checkColor: Colors.white,
                           fillColor: MaterialStateProperty.resolveWith(
-                                  (states) => const Color(0xFFA5A6F6)),
+                              (states) => const Color(0xFFA5A6F6)),
                           value: isChecked,
                           onChanged: (bool? value) {
                             setState(() {
@@ -149,28 +147,24 @@ class _UserLoginState extends State<UserLogin> {
                         RichText(
                           text: const TextSpan(
                             text: 'By creating an account , you agree to our\n',
-                            style: TextStyle(
-                                color:Colors.black38,
-                                fontSize: 16),
+                            style:
+                                TextStyle(color: Colors.black38, fontSize: 16),
                             children: <TextSpan>[
                               TextSpan(
                                   text: 'Term and Condition',
                                   style: TextStyle(
-                                      color: Color(0xFFA5A6F6),
-                                      fontSize: 16)),
+                                      color: Color(0xFFA5A6F6), fontSize: 16)),
                             ],
                           ),
                         ),
-
                       ],
                     ),
                     const SizedBox(height: 20),
                     InkWell(
-                      onTap: (){
-                        if(_createUserFormKey.currentState!.validate()){
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => ))
+                      onTap: () {
+                        if (_createUserFormKey.currentState!.validate()) {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) =>const Registers()));
                         }
-
                       },
                       child: Container(
                         decoration: const BoxDecoration(
@@ -181,9 +175,9 @@ class _UserLoginState extends State<UserLogin> {
                         height: 50,
                         child: const Center(
                             child: Text(
-                              "Create Account",
-                              style: TextStyle(color: Colors.white, fontSize: 17),
-                            )),
+                          "Create Account",
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        )),
                       ),
                     ),
                     const SizedBox(
@@ -191,21 +185,23 @@ class _UserLoginState extends State<UserLogin> {
                     ),
                     Center(
                       child: InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const Registers()));
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Registers()));
                         },
                         child: RichText(
                           text: const TextSpan(
                             text: "Already have an account?  ",
-                            style: TextStyle(
-                                color: Colors.black38,
-                                fontSize: 16),
+                            style:
+                                TextStyle(color: Colors.black38, fontSize: 16),
                             children: <TextSpan>[
                               TextSpan(
                                   text: 'Sign in',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color:Color(0xFF5D5FEF),
+                                      color: Color(0xFF5D5FEF),
                                       fontSize: 16)),
                             ],
                           ),

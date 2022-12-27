@@ -1,5 +1,6 @@
 import 'package:budget/view/%20authentication/forgot_password.dart';
 import 'package:budget/view/%20authentication/login.dart';
+import 'package:budget/view/master/master_screen.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/properties.dart';
 
@@ -136,7 +137,7 @@ class _RegistersState extends State<Registers> {
                     InkWell(
                       onTap: () {
                         if (_registerFormKey.currentState!.validate()) {
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => ))
+                          Navigator.push(context, MaterialPageRoute(builder: (context) =>const MasterPage()));
                         }
                       },
                       child: Container(
