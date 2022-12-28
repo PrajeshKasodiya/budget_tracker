@@ -1,4 +1,5 @@
 import 'package:budget/view/master/home.dart';
+import 'package:budget/view/master/notification.dart';
 import 'package:budget/view/master/profile.dart';
 import 'package:budget/widgets/properties.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MasterPage extends StatefulWidget {
 
 class _MasterPageState extends State<MasterPage> {
   int currentTab = 0;
-  List<Widget> body = [const HomePge(),ProfilePage()];
+  List<Widget> body = [const HomePge(),const NotificationPage(),const NotificationPage(),const NotificationPage(),const ProfilePage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
