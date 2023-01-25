@@ -4,7 +4,7 @@ import 'package:budget/view/%20authentication/success.dart';
 import 'package:budget/widgets/properties.dart';
 import 'package:flutter/material.dart';
 
-var properties = Properties();
+
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
 

@@ -1,8 +1,6 @@
 import 'package:budget/view/%20authentication/register.dart';
-import 'package:budget/widgets/properties.dart';
 import 'package:flutter/material.dart';
-
-var properties = Properties();
+import 'package:budget/main.dart';
 
 class UserLogin extends StatefulWidget {
   const UserLogin({Key? key}) : super(key: key);
@@ -14,6 +12,9 @@ class UserLogin extends StatefulWidget {
 class _UserLoginState extends State<UserLogin> {
   bool isChecked = false;
   bool securePassword = true;
+  final _userNameController = TextEditingController();
+  final _userEmailController = TextEditingController();
+  final _userPasswordController = TextEditingController();
   final _createUserFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -52,6 +53,7 @@ class _UserLoginState extends State<UserLogin> {
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: _userNameController,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         border: OutlineInputBorder(
@@ -78,7 +80,9 @@ class _UserLoginState extends State<UserLogin> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    // for email
                     TextFormField(
+                      controller: _userEmailController,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         border: OutlineInputBorder(
@@ -105,7 +109,9 @@ class _UserLoginState extends State<UserLogin> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    //for password
                     TextFormField(
+                      controller: _userPasswordController,
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
                             onPressed: () {
@@ -148,12 +154,12 @@ class _UserLoginState extends State<UserLogin> {
                           text: const TextSpan(
                             text: 'By creating an account , you agree to our\n',
                             style:
-                                TextStyle(color: Colors.black38, fontSize: 16),
+                                TextStyle(color: Colors.black38, fontSize: 14),
                             children: <TextSpan>[
                               TextSpan(
                                   text: 'Term and Condition',
                                   style: TextStyle(
-                                      color: Color(0xFFA5A6F6), fontSize: 16)),
+                                      color: Color(0xFFA5A6F6), fontSize: 14)),
                             ],
                           ),
                         ),
@@ -163,8 +169,14 @@ class _UserLoginState extends State<UserLogin> {
                     InkWell(
                       onTap: () {
                         if (_createUserFormKey.currentState!.validate()) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>const Registers()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Registers()));
                         }
+                        setState(() {
+                          // var result = ;
+                        });
                       },
                       child: Container(
                         decoration: const BoxDecoration(

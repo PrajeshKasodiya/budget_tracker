@@ -1,5 +1,8 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:budget/controller/services.dart';
+import 'package:budget/main.dart';
+import 'package:flutter/material.dart';
 
 // home widget
 class HomePge extends StatefulWidget {
@@ -10,6 +13,18 @@ class HomePge extends StatefulWidget {
 }
 
 class _HomePgeState extends State<HomePge> {
+  final _userService = UserServices();
+
+  @override
+  void initState() {
+    getAllUserDetails();
+    super.initState();
+  }
+
+  getAllUserDetails() async {
+    final users = await _userService.readUser();
+    
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +40,7 @@ class _HomePgeState extends State<HomePge> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const  Text("Good Morning, Prajesh!",style: TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.black87),),
+                    const  Text("Good Morning, Prajesh!",style: TextStyle(fontSize:20,fontWeight: FontWeight.bold,color:Colors.black87),),
                     IconButton(onPressed: (){}, icon:const Icon(Icons.refresh_sharp))
                   ],
                 ),
@@ -37,8 +52,9 @@ class _HomePgeState extends State<HomePge> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(13),
                     color:const Color(0xFFE5E7F6)
-
                 ),
+                child: Center(child: Text("Emails = ${user.email}")),
+
               ),
               Padding(
                 padding:const EdgeInsets.only(left: 20,right :20,top: 20 ,bottom: 5),
@@ -58,7 +74,7 @@ class _HomePgeState extends State<HomePge> {
                       // padding: EdgeInsets.only(),
                       itemBuilder:  (BuildContext context, int index){
                         return Container(
-                          margin:const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                          margin:const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
                           width: double.maxFinite,
                           child: Column(
                             children: [

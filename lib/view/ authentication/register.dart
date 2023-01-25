@@ -1,10 +1,10 @@
+import 'package:budget/model/user_entity.dart';
 import 'package:budget/view/%20authentication/forgot_password.dart';
 import 'package:budget/view/%20authentication/login.dart';
 import 'package:budget/view/master/master_screen.dart';
 import 'package:flutter/material.dart';
-import '../../widgets/properties.dart';
+import 'package:budget/main.dart';
 
-var properties = Properties();
 class Registers extends StatefulWidget {
   const Registers({Key? key}) : super(key: key);
 
@@ -13,7 +13,10 @@ class Registers extends StatefulWidget {
 }
 
 class _RegistersState extends State<Registers> {
+  final _userEmailController = TextEditingController();
+  final _userPasswordController = TextEditingController();
   bool isChecked = false;
+
   bool securePassword = true;
   final _registerFormKey = GlobalKey<FormState>();
   @override
@@ -61,6 +64,7 @@ class _RegistersState extends State<Registers> {
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: _userEmailController,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         border: OutlineInputBorder(
@@ -88,6 +92,7 @@ class _RegistersState extends State<Registers> {
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: _userPasswordController,
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
                             onPressed: () {
@@ -135,10 +140,14 @@ class _RegistersState extends State<Registers> {
                     ),
                     const SizedBox(height: 10),
                     InkWell(
-                      onTap: () {
+                      onTap: () async {
                         if (_registerFormKey.currentState!.validate()) {
                           Navigator.push(context, MaterialPageRoute(builder: (context) =>const MasterPage()));
                         }
+                        setState(() {
+                          var result =  userServices.insertUser(User(email: _userEmailController.text,password:_userPasswordController.text ));
+                        });
+
                       },
                       child: Container(
                         decoration: const BoxDecoration(

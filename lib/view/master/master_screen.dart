@@ -5,7 +5,6 @@ import 'package:budget/widgets/properties.dart';
 import 'package:flutter/material.dart';
 
 
-var properties = Properties();
 class MasterPage extends StatefulWidget {
   const MasterPage({Key? key}) : super(key: key);
 
