@@ -31,13 +31,5 @@ class Properties{
   ];
 
   //profile page navigation list
-  final List profileNavigation = [
-    const MyCard(),
-    const NotificationPage(),
-    const MyCard(),
-    const MyCard(),
-    const MyCard(),
-    const MyCard(),
-    const MyCard(),
-  ];
+
 }

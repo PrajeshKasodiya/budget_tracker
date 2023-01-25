@@ -1,18 +1,14 @@
-import 'package:budget/widgets/properties.dart';
+import 'package:budget/controller/Provider/Provider_helper/authentication_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-var properties = Properties();
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
-
-  @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    final provider =
+        Provider.of<AuthenticationProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -39,69 +35,235 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: properties.icons.length,
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.only(top: 10),
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    properties.profileNavigation[index]));
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        width: double.maxFinite,
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 10),
-                                    width: 57,
-                                    height: 57,
-                                    decoration: const BoxDecoration(
-                                        color: Color(0xFFDFDFFA),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(15))),
-                                    child: Center(
-                                      child: Icon(properties.icons[index],
-                                          size: 27, color: Colors.blueAccent),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  properties.profileText[index],
-                                  style: const TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const Spacer(),
-                                IconButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    icon: const Icon(Icons.chevron_right),
-                                    color: Colors.blueAccent),
-                              ],
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                child: ListView(
+                  children: [
+                    InkWell(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 10),
+                              width: 45,
+                              height: 45,
+                              decoration: const BoxDecoration(
+                                  color: Color(0xFFDFDFFA),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15))),
+                              child: const Center(
+                                child: Icon(Icons.image,
+                                    size: 27, color: Colors.blueAccent),
+                              ),
                             ),
-                            Container(
-                                margin: const EdgeInsets.symmetric(vertical: 9),
-                                color: Colors.black12,
-                                width: double.maxFinite,
-                                height: 1)
-                          ],
-                        ),
+                          ),
+                          const Text(
+                            "df",
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
+                          ),
+                          const Spacer(),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.chevron_right),
+                              color: Colors.blueAccent),
+                        ],
                       ),
-                    );
-                  }),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 45,
+                            height: 45,
+                            decoration: const BoxDecoration(
+                                color: Color(0xFFDFDFFA),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15))),
+                            child: const Center(
+                              child: Icon(Icons.image,
+                                  size: 27, color: Colors.blueAccent),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "df",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.chevron_right),
+                            color: Colors.blueAccent),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 45,
+                            height: 45,
+                            decoration: const BoxDecoration(
+                                color: Color(0xFFDFDFFA),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15))),
+                            child: const Center(
+                              child: Icon(Icons.image,
+                                  size: 27, color: Colors.blueAccent),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "df",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.chevron_right),
+                            color: Colors.blueAccent),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 45,
+                            height: 45,
+                            decoration: const BoxDecoration(
+                                color: Color(0xFFDFDFFA),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15))),
+                            child: const Center(
+                              child: Icon(Icons.image,
+                                  size: 27, color: Colors.blueAccent),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "df",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.chevron_right),
+                            color: Colors.blueAccent),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 45,
+                            height: 45,
+                            decoration: const BoxDecoration(
+                                color: Color(0xFFDFDFFA),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15))),
+                            child: const Center(
+                              child: Icon(Icons.image,
+                                  size: 27, color: Colors.blueAccent),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "df",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.chevron_right),
+                            color: Colors.blueAccent),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 45,
+                            height: 45,
+                            decoration: const BoxDecoration(
+                                color: Color(0xFFDFDFFA),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15))),
+                            child: const Center(
+                              child: Icon(Icons.image,
+                                  size: 27, color: Colors.blueAccent),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "df",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.chevron_right),
+                            color: Colors.blueAccent),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 45,
+                            height: 45,
+                            decoration: const BoxDecoration(
+                                color: Color(0xFFDFDFFA),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15))),
+                            child: const Center(
+                              child: Icon(Icons.image,
+                                  size: 27, color: Colors.blueAccent),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "Logout",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {
+                              provider.logout(context);
+                            },
+                            icon: const Icon(Icons.chevron_right),
+                            color: Colors.blueAccent),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             )
           ],
         ),

@@ -31,8 +31,6 @@ class Success extends StatelessWidget {
                     "Please check your email to confirm ",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.black45),
                   ),
-
-
                 ]),
           ),
         ),
