@@ -1,28 +1,31 @@
+import 'package:budget/controller/Provider/Provider_helper/authentication_provider.dart';
 import 'package:budget/view/%20authentication/newpassword.dart';
-import 'package:budget/view/%20authentication/register.dart';
-import 'package:budget/view/%20authentication/success.dart';
-import 'package:budget/widgets/properties.dart';
+import 'package:budget/widgets/constent/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-var properties = Properties();
-class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({Key? key}) : super(key: key);
+class ForgetPassword extends StatelessWidget {
+  ForgetPassword({Key? key}) : super(key: key);
 
-  @override
-  State<ForgetPassword> createState() => _ForgetPasswordState();
-}
-
-class _ForgetPasswordState extends State<ForgetPassword> {
   final _forgetFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AuthenticationProvider>(context,listen: false);
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton( onPressed: (){
+        leading: IconButton(
+          onPressed: () {
             Navigator.pop(context);
-          }, icon: const Icon(Icons.arrow_back_outlined,color: Colors.black,),),
-          elevation: 0,
-          backgroundColor: Colors.white
+          },
+          icon: const Icon(
+            Icons.arrow_back_outlined,
+          ),
+        ),
+        title: const Text("Forgot Password",
+            style: TextStyle(color: Colors.white)),
+        elevation: 0,
+        backgroundColor: const Color(0xFFA5A6F6),
       ),
       backgroundColor: Colors.white,
       body: Form(
@@ -30,7 +33,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding: properties.outsidePadding.padding,
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -41,28 +44,27 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             fontSize: 24),
-
                       ),
                     ),
-                    const SizedBox(
-                      height: 40,
-                    ),
+                    AppContent.twentyHeightSizebox,
                     const Text(
                       "Please enter your email,we will confirm the password \nchange via email",
-                      style: TextStyle(fontSize: 16,color: Colors.black87),
+                      style: TextStyle(fontSize: 16, color: Colors.black87),
                     ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                      Padding(
-                      padding:properties.inlinePadding.padding,
+                    AppContent.twentyHeightSizebox,
+                    Padding(
+                      padding: properties.inlinePadding.padding,
                       child: const Text(
                         "Email",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    AppContent.tenHeightSizebox,
                     TextFormField(
+                      controller: provider.userEmailController,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         border: OutlineInputBorder(
@@ -75,16 +77,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-
+                    AppContent.tenHeightSizebox,
                     InkWell(
-                      onTap: (){
-                        if(_forgetFormKey.currentState!.validate()){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>const NewPassword()));
+                      onTap: () {
+                        if (_forgetFormKey.currentState!.validate()) {
+                           provider.forgetPassword(provider.userEmailController.text, context);
                         }
-
                       },
                       child: Container(
                         decoration: const BoxDecoration(
@@ -95,13 +93,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         height: 50,
                         child: const Center(
                             child: Text(
-                              "Confirm",
-                              style: TextStyle(color: Colors.white, fontSize: 17),
-                            )),
+                          "Confirm",
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        )),
                       ),
                     ),
-
-
                   ]),
             ),
           ),
@@ -110,6 +106,3 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     );
   }
 }
-
-
-

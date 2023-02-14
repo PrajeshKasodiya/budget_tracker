@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "738203485184",
+    "project_id": "budget-tracker-964a0",
+    "storage_bucket": "budget-tracker-964a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738203485184:android:a38c083a89ab4d479f84e5",
+        "android_client_info": {
+          "package_name": "com.trueuly.budget"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738203485184-c2ut4dhklodfmqbmb5kvh8d7fm5ah3kr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trueuly.budget",
+            "certificate_hash": "1341fa415fe511f7a90a7deb0a420ff961b4d130"
+          }
+        },
+        {
+          "client_id": "738203485184-gdmj4t5ugp3ru1m7r4kt63eq5ok4e6b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzFuoSllm8w9I36y8BA48vMo4eVYk7dWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738203485184-gdmj4t5ugp3ru1m7r4kt63eq5ok4e6b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

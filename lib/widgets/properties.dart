@@ -1,3 +1,4 @@
+import 'package:budget/view/master/notification.dart';
 import 'package:budget/view/profile/my_card.dart';
 import 'package:flutter/material.dart';
 
@@ -30,13 +31,5 @@ class Properties{
   ];
 
   //profile page navigation list
-  final List profileNavigation = [
-    const MyCard(),
-    const MyCard(),
-    const MyCard(),
-    const MyCard(),
-    const MyCard(),
-    const MyCard(),
-    const MyCard(),
-  ];
+
 }

@@ -1,30 +1,29 @@
-import 'package:budget/view/%20authentication/register.dart';
-import 'package:budget/widgets/properties.dart';
+import 'package:budget/controller/Provider/Provider_helper/authentication_provider.dart';
+import 'package:budget/controller/Provider/Provider_screen/sign_in.dart';
+import 'package:budget/widgets/constent/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:budget/main.dart';
+import 'package:provider/provider.dart';
 
-var properties = Properties();
+class SignUp extends StatelessWidget {
+  SignUp({Key? key}) : super(key: key);
 
-class UserLogin extends StatefulWidget {
-  const UserLogin({Key? key}) : super(key: key);
 
-  @override
-  State<UserLogin> createState() => _UserLoginState();
-}
 
-class _UserLoginState extends State<UserLogin> {
-  bool isChecked = false;
-  bool securePassword = true;
-  final _createUserFormKey = GlobalKey<FormState>();
+  final createUserFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    final provider =
+        Provider.of<AuthenticationProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
-        key: _createUserFormKey,
+        key: createUserFormKey,
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding: properties.outsidePadding.padding,
+              padding: const EdgeInsets.all(15.0),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -37,36 +36,8 @@ class _UserLoginState extends State<UserLogin> {
                             fontSize: 25),
                       ),
                     ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Padding(
-                      padding: properties.inlinePadding.padding,
-                      child: const Text(
-                        "Full Name",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(7))),
-                      ),
-                      validator: (value) {
-                        if (value!.trim().isEmpty) {
-                          return "Please Enter Name ";
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    AppContent.twentyHeightSizebox,
+                    // email or phone number ---------------------------------
                     Padding(
                       padding: properties.inlinePadding.padding,
                       child: const Text(
@@ -77,8 +48,9 @@ class _UserLoginState extends State<UserLogin> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    AppContent.tenHeightSizebox,
                     TextFormField(
+                      controller: provider.userEmailController,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         border: OutlineInputBorder(
@@ -86,14 +58,13 @@ class _UserLoginState extends State<UserLogin> {
                       ),
                       validator: (value) {
                         if (value!.trim().isEmpty) {
-                          return "Please Enter Email or Number ";
+                          return "Please Enter Email";
                         }
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    AppContent.tenHeightSizebox,
+                    // password ----------------------------------------------
                     Padding(
                       padding: properties.inlinePadding.padding,
                       child: const Text(
@@ -104,66 +75,89 @@ class _UserLoginState extends State<UserLogin> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    AppContent.tenHeightSizebox,
                     TextFormField(
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                securePassword = !securePassword;
-                              });
-                            },
-                            icon: securePassword
-                                ? const Icon(Icons.visibility_off)
-                                : const Icon(Icons.visibility)),
-                        contentPadding: const EdgeInsets.all(10.0),
-                        border: const OutlineInputBorder(
+                      controller: provider.userPasswordController,
+                      decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(7))),
                       ),
-                      obscureText: securePassword,
                       validator: (value) {
                         if (value!.trim().isEmpty) {
                           return "Please Enter Password!";
                         }
+
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 20,
+                    AppContent.tenHeightSizebox,
+                    // confirm password --------------------------------------
+                    Padding(
+                      padding: properties.inlinePadding.padding,
+                      child: const Text(
+                        "Confirm Password",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
+                    AppContent.tenHeightSizebox,
+                    TextFormField(
+                      controller: provider.userConfirmPasswordController,
+                      decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(7))),
+                      ),
+                      validator: (value) {
+                        if (value!.trim().isEmpty) {
+                          return "Please Enter Your Confirm Password ";
+                        } else if (provider.userPasswordController.text !=
+                                provider.userConfirmPasswordController.text &&
+                            provider.userPasswordController.text.isNotEmpty) {
+                          return "password is not match!";
+                        }
+                        return null;
+                      },
+                    ),
+                    AppContent.tenHeightSizebox,
+                    // check box part-----------------------------------------
                     Row(
                       children: [
                         Checkbox(
                           checkColor: Colors.white,
                           fillColor: MaterialStateProperty.resolveWith(
                               (states) => const Color(0xFFA5A6F6)),
-                          value: isChecked,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              isChecked = value!;
-                            });
-                          },
+                          value: true,
+                          onChanged: (bool? value) {},
                         ),
                         RichText(
                           text: const TextSpan(
                             text: 'By creating an account , you agree to our\n',
                             style:
-                                TextStyle(color: Colors.black38, fontSize: 16),
+                                TextStyle(color: Colors.black38, fontSize: 14),
                             children: <TextSpan>[
                               TextSpan(
                                   text: 'Term and Condition',
                                   style: TextStyle(
-                                      color: Color(0xFFA5A6F6), fontSize: 16)),
+                                      color: Color(0xFFA5A6F6), fontSize: 14)),
                             ],
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    AppContent.tenHeightSizebox,
+                    // button part -------------------------------------------
                     InkWell(
                       onTap: () {
-                        if (_createUserFormKey.currentState!.validate()) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>const Registers()));
+                        if (createUserFormKey.currentState!.validate()) {
+                          provider.firebaseSignUp(
+                              provider.userEmailController.text,
+                              provider.userPasswordController.text,
+                              provider.userConfirmPasswordController.text,
+                              context);
                         }
                       },
                       child: Container(
@@ -180,16 +174,15 @@ class _UserLoginState extends State<UserLogin> {
                         )),
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    AppContent.twentyHeightSizebox,
+                    // navigate to register page------------------------------
                     Center(
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Registers()));
+                                  builder: (context) => SignIn()));
                         },
                         child: RichText(
                           text: const TextSpan(
